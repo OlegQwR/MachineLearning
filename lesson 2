@@ -1,1 +1,28 @@
-a
+import cv2
+
+img = cv2.imread('images/nft.jpg')  # загрузка образа картинки в переменную
+new_img = cv2.resize(img, (300, 500)) # картинка с новым размером
+cv2.imshow('Result', new_img) # показывает картинку
+
+#cv2.imshow('Result', img) # показывает картинку
+
+print(img.shape) # выводит размер картинки
+cv2.waitKey(0) # таймер длительности показа картинки
+
+
+# cap = cv2.VideoCapture('videos/vid.mp4') # показ видео по заданному пути
+# # cap = cv2.VideoCapture(0) # трансляция с камеры
+# # cap.set(3, 500) #ширина картинки c камеры
+# # cap.set(4, 300) #длинна картинки с камеры
+#
+#
+# while True:  #
+#     success, img = cap.read()
+#     cv2.imshow('Result', img)
+#
+#     # if cv2.waitKey(1) == ord('q'):
+#     #     break
+#     if cv2.waitKey(1) & 0xFF == ord('q'): #закрывает воспроизведение видео
+#         break
+#
+
