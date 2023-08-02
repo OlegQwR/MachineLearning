@@ -1,8 +1,19 @@
 import cv2
+import numpy as np
 
 img = cv2.imread('images/nft.jpg')  # загрузка образа картинки в переменную
-new_img = cv2.resize(img, (300, 500)) # картинка с новым размером
+new_img = cv2.resize(img, (img.shape[1] // 1, img.shape[0] // 1)) # картинка с новым размером
+new_img = cv2.GaussianBlur(img, (9, 9), 0)  # размытие картинки
+new_img = cv2.cvtColor(new_img, cv2.COLOR_BGR2GRAY) # изменение формата картинки(изменение кол-ва слоёв)
+new_img = cv2.Canny(new_img, 31, 31) # перевод картинки в бинарный код(нахождение углов)
+
+kernel = np.ones((5, 5), np.uint8) # создаём матрицу
+new_img = cv2.dilate(new_img, kernel, iterations=1) # увеличил жирность контура обводки
+new_img = cv2.erode(new_img, kernel, iterations=1) # уменьшение жирности контура обводки
+
+
 cv2.imshow('Result', new_img) # показывает картинку
+
 
 #cv2.imshow('Result', img) # показывает картинку
 
@@ -25,4 +36,3 @@ cv2.waitKey(0) # таймер длительности показа картин
 #     if cv2.waitKey(1) & 0xFF == ord('q'): #закрывает воспроизведение видео
 #         break
 #
-
