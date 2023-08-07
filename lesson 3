@@ -1,0 +1,22 @@
+import cv2
+import numpy as np
+
+photo = np.zeros((450, 450, 3), dtype='uint8')  # создаём матрицу где все элементы 0
+#photo[100:150, 200:280] = 255, 0, 0   # закрашиваем часть картинки в синий
+cv2.rectangle(photo, (0, 0), (200, 100), (0, 255, 0), thickness=3) # создал квадрат обводкой (ширина, высота)
+
+cv2.line(photo, (225, 0), (225, 100), (0, 0, 255), thickness=2) #создал линию
+'''
+треугольник
+cv2.line(photo, (300, 15), (420, 225), (255, 0, 0), thickness=1)
+cv2.line(photo, (300, 15), (360, 100), (0, 255, 0), thickness=1)
+cv2.line(photo, (360, 100), (420, 225), (0, 0, 255), thickness=1)
+'''
+cv2.circle(photo, (225, 160), 60,  (255, 0, 0), thickness=cv2.FILLED) #создал закрашенный круг
+
+cv2.putText(photo, 'Hi', (225, 300), cv2.FONT_HERSHEY_TRIPLEX, 3, (0, 0, 200), thickness=1) #создал текст
+
+
+
+cv2.imshow('Photo', photo)
+cv2.waitKey(0)
