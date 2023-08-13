@@ -1,0 +1,26 @@
+import cv2
+import numpy as np
+
+#img = np.zeros((350, 350), dtype='uint8') #создал полотно
+#
+#circle = cv2.circle(img.copy(), (0, 0), 80, 255, -1)
+# square = cv2.rectangle(img.copy(), (25, 25), (250, 350), 255, -1)
+#
+# img = cv2.bitwise_and(circle, square) # обьеженяет изображения так что остаёться только их пересечение
+# img = cv2.bitwise_or(circle, square) # обьеденяет оба изображения независимо от общих элементов
+# img = cv2.bitwise_xor(circle, square) # обьеденяет оба изображения но ибщие елементы(пересечение) не добавляет
+# img = cv2.bitwise_xor(square) # делает инверсию
+#
+#
+#
+# cv2.imshow('Result', img)
+
+photo = cv2.imread('images/car.jpg')
+img = np.zeros((photo.shape[:2]), dtype='uint8')
+circle = cv2.circle(img.copy(), (720, 300), 40, 255, -1)
+
+img = cv2.bitwise_and(photo, photo, mask=circle)# использовал маску с фигурой круг чтобы на фото показывать только выбранную область
+
+cv2.imshow('Result', img)
+
+cv2.waitKey(0)
